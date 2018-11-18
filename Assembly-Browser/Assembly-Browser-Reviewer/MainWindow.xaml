@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="Load Assembly" Command="{Binding LoadCommand}" HorizontalAlignment="Left" Margin="644,361,0,0" VerticalAlignment="Top" Width="115" Height="26"/>
+
     </Grid>
 </Window>
