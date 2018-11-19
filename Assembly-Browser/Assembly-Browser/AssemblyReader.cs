@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,9 +9,32 @@ namespace Assembly_Browser
 {
     class AssemblyReader
     {
+        public List<NamespaceInfo> Namespaces { set; get; }
+
         public AssemblyReader(string fileName)
         {
+            Namespaces = new List<NamespaceInfo>();
 
+            Assembly asm = Assembly.LoadFrom(fileName);
+
+            //working with namespaces
+            foreach (var type in asm.DefinedTypes)
+            {
+                if (Namespaces.Find(x => x.Name == type.Namespace) == null
+                    && type.Namespace != null)
+                {
+                    Namespaces.Add(new NamespaceInfo(type.Namespace));
+                }
+            }
+
+            //working with dataTypes
+            foreach (var ns in Namespaces)
+            {
+                foreach (var type in asm.DefinedTypes.Where(x => x.Namespace == ns.Name))
+                {
+                    ns.DataTypes.Add(new DatatypeInfo(type));
+                }
+            }
         }
     }
 }
