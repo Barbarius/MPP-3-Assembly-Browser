@@ -11,15 +11,15 @@ namespace Assembly_Browser
     {
         public string Name { set; get; }
         public string DataTypeInfo { set; get; }
-        public List<Field> fields;
-        public List<Property> properties;
-        public List<Method> methods;
+        public List<FieldInfo> fields;
+        public List<PropertyInfo> properties;
+        public List<MethodInfo> methods;
 
         public DatatypeInfo(TypeInfo t)
         {
-            fields = new List<Field>();
-            properties = new List<Property>();
-            methods = new List<Method>();
+            fields = new List<FieldInfo>();
+            properties = new List<PropertyInfo>();
+            methods = new List<MethodInfo>();
 
             GetFields(t);
             GetProperties(t);
@@ -32,7 +32,7 @@ namespace Assembly_Browser
 
             foreach (var field in fields)
             {
-                this.fields.Add(new Field(field));
+                this.fields.Add(new FieldInfo(field));
             }
         }
 
@@ -42,7 +42,7 @@ namespace Assembly_Browser
 
             foreach (var property in properties)
             {
-                this.properties.Add(new Property(property));
+                this.properties.Add(new PropertyInfo(property));
             }
         }
 
@@ -54,7 +54,7 @@ namespace Assembly_Browser
             {
                 if (!method.IsSpecialName)
                 {
-                    this.methods.Add(new Method(method));
+                    this.methods.Add(new MethodInfo(method));
                 }
             }
         }

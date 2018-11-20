@@ -17,7 +17,7 @@ namespace Assembly_Browser
 
             Assembly asm = Assembly.LoadFrom(fileName);
 
-            //working with namespaces
+            //namespaces
             foreach (var type in asm.DefinedTypes)
             {
                 if (Namespaces.Find(x => x.Name == type.Namespace) == null
@@ -27,7 +27,7 @@ namespace Assembly_Browser
                 }
             }
 
-            //working with dataTypes
+            //datatypes
             foreach (var ns in Namespaces)
             {
                 foreach (var type in asm.DefinedTypes.Where(x => x.Namespace == ns.Name))

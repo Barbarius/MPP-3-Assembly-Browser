@@ -41,6 +41,11 @@
     <Compile Include="AssemblyBrowserModelViewer.cs" />
     <Compile Include="AssemblyReader.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="DatatypeInfo.cs" />
+    <Compile Include="FieldInfo.cs" />
+    <Compile Include="MethodInfo.cs" />
+    <Compile Include="NamespaceInfo.cs" />
+    <Compile Include="PropertyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
