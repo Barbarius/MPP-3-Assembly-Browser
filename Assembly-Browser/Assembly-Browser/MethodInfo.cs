@@ -14,7 +14,7 @@ namespace Assembly_Browser
         public MethodInfo(System.Reflection.MethodInfo mi)
         {
             name = mi.Name;
-            modificators = GetTypeModificators(mi.GetType());
+            modificators = GetTypeModificators(mi.GetType()) + mi.ToString();
         }
 
         private string GetTypeModificators(Type t)
