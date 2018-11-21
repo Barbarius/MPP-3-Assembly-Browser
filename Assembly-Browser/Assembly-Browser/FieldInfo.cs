@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assembly_Browser
 {
-    class FieldInfo
+    public class FieldInfo
     {
         public string name;
         public string type;
@@ -16,16 +16,23 @@ namespace Assembly_Browser
         {
             name = fi.Name;
 
-            modificators = GetTypeModificators(fi.GetType());
+            // get acces modifires
+            modificators = GetModificators(fi.GetType());
+            if (fi.IsLiteral && !fi.IsInitOnly)
+                modificators += "const ";
+            if (fi.IsInitOnly)
+                modificators += "readonly ";
+            if (fi.IsStatic)
+                modificators += "static ";
 
-            // check for generic types
+            // check for generic types and get type
             if (fi.FieldType.IsGenericType)
                 type += fi.FieldType.Name + "<" + GetGeneric(fi.FieldType.GenericTypeArguments) + ">";
             else
                 type += fi.FieldType.Name;
         }
 
-        private string GetTypeModificators(Type t)
+        private string GetModificators(Type t)
         {
             if (t.IsNestedPrivate)
                 return "private ";

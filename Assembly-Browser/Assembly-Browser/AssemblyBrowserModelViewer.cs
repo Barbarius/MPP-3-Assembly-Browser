@@ -11,13 +11,26 @@ namespace Assembly_Browser
 {
     public class AssemblyBrowserModelViewer : INotifyPropertyChanged
     {
-        AssemblyReader assemblyReader;
+        AssemblyReader result;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public AssemblyReader AssemblyTree
+        {
+            get
+            {
+                return result;
+            }
+            protected set
+            {
+                result = value;
+                OnPropertyChanged();
+            }
         }
 
         protected void LoadAssembly(object o)
@@ -31,8 +44,7 @@ namespace Assembly_Browser
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                assemblyReader = new AssemblyReader(openFileDialog.FileName);
-                OnPropertyChanged();
+                AssemblyTree = new AssemblyReader(openFileDialog.FileName);
             }
         }
 
@@ -41,7 +53,6 @@ namespace Assembly_Browser
 
         public AssemblyBrowserModelViewer()
         {
-            assemblyReader = null;
             LoadCommand = new Command(LoadAssembly);
         }
     }

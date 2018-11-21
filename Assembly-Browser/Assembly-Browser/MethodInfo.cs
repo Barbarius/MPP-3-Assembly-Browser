@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Assembly_Browser
 {
-    class MethodInfo
+    public class MethodInfo
     {
         public string name;
         public string modificators;
@@ -14,10 +16,26 @@ namespace Assembly_Browser
         public MethodInfo(System.Reflection.MethodInfo mi)
         {
             name = mi.Name;
-            modificators = GetTypeModificators(mi.GetType()) + mi.ToString();
+
+            // get acces modifires
+            modificators = GetModificators(mi.GetType()) + mi.ToString();
+            if (mi.IsAbstract && !mi.DeclaringType.IsInterface)
+                modificators += "abstract ";
+            if (mi.GetCustomAttribute(typeof(AsyncStateMachineAttribute)) != null)
+                modificators += "async ";
+            if ((mi.MethodImplementationFlags & MethodImplAttributes.InternalCall) != 0)
+                modificators += "extern ";
+            if (!mi.Equals(mi.GetBaseDefinition()))
+                modificators += "overriden ";
+            if (mi.IsVirtual && mi.IsFinal)
+                modificators += "sealed ";
+            if (mi.IsStatic)
+                modificators += "static ";
+            if (mi.IsVirtual && !mi.IsFinal && mi.Equals(mi.GetBaseDefinition()) && !mi.DeclaringType.IsInterface)
+                modificators += "virtual ";
         }
 
-        private string GetTypeModificators(Type t)
+        private string GetModificators(Type t)
         {
             if (t.IsNestedPrivate)
                 return "private ";

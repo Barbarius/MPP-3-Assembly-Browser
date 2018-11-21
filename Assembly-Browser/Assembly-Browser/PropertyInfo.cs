@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace Assembly_Browser
 {
-    class PropertyInfo
+    public class PropertyInfo
     {
         public string name;
         public string type;

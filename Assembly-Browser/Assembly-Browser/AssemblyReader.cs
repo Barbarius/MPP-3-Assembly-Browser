@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assembly_Browser
 {
-    class AssemblyReader
+    public class AssemblyReader
     {
         public List<NamespaceInfo> Namespaces { set; get; }
 

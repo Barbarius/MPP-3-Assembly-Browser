@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assembly_Browser
 {
-    class NamespaceInfo
+    public class NamespaceInfo
     {
         public string Name { set; get; }
 
