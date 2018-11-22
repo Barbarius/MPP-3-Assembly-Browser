@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestProject
 {
-    public class EmtpyClasscs
+    public class EmtpyClass
     {
     }
 }

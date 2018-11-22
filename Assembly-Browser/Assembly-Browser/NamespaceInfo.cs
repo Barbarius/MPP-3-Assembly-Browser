@@ -14,7 +14,7 @@ namespace Assembly_Browser
 
         public NamespaceInfo(string name)
         {
-            this.Name = name;
+            Name = name;
             DataTypes = new List<DatatypeInfo>();
         }
     }

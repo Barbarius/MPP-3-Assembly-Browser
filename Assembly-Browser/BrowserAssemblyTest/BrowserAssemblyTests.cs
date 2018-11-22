@@ -35,15 +35,21 @@ namespace BrowserAssemblyTest
         [TestMethod]
         public void EmptyClassTest()
         {
-            foreach (DatatypeInfo datatype in AssemblyTree.Namespaces[0].DataTypes)
-            {
-                if (datatype.Name == "EmptyClasscs")
-                {
-                    Assert.AreEqual(datatype.fields.Count, 0);
-                    Assert.AreEqual(datatype.properties.Count, 0);
-                    Assert.AreEqual(datatype.methods.Count, 0);
-                }
-            }
+            // EmptyClass
+            Assert.AreEqual(AssemblyTree.Namespaces[0].DataTypes[0].shortName, "EmtpyClass");
+            Assert.AreEqual(AssemblyTree.Namespaces[0].DataTypes[0].fields.Count, 0);
+            Assert.AreEqual(AssemblyTree.Namespaces[0].DataTypes[0].properties.Count, 0);
+            Assert.AreEqual(AssemblyTree.Namespaces[0].DataTypes[0].methods.Count, 4);
+        }
+
+        [TestMethod]
+        public void NotEmptyClassTest()
+        {
+            // SimpleClass
+            Assert.AreEqual(AssemblyTree.Namespaces[0].DataTypes[1].shortName, "SimpleClass");
+            Assert.IsTrue(AssemblyTree.Namespaces[0].DataTypes[1].fields.Count > 0);
+            Assert.IsTrue(AssemblyTree.Namespaces[0].DataTypes[1].properties.Count > 0);
+            Assert.IsTrue(AssemblyTree.Namespaces[0].DataTypes[1].methods.Count > 0);
         }
     }
 }

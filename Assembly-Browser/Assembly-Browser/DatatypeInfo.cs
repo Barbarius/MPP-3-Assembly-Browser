@@ -11,6 +11,7 @@ namespace Assembly_Browser
     {
         public string Name { set; get; }
         public string DataTypeInfo { set; get; }
+        public string shortName;
         public List<FieldInfo> fields;
         public List<PropertyInfo> properties;
         public List<MethodInfo> methods;
@@ -25,7 +26,8 @@ namespace Assembly_Browser
                 modificators += "abstract ";
             if (!t.IsAbstract && t.IsSealed)
                 modificators += "sealed ";
-            Name = modificators + GetClassType(t) + t.Name;
+            shortName = t.Name;
+            Name = modificators + GetClassType(t) + shortName;
 
             fields = new List<FieldInfo>();
             properties = new List<PropertyInfo>();

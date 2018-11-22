@@ -38,7 +38,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmtpyClasscs.cs" />
+    <Compile Include="EmtpyClass.cs" />
     <Compile Include="SimpleClass.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
