@@ -115,7 +115,7 @@ namespace Assembly_Browser
         private void GetAllDatatypeInfo()
         {
             if (fields.Count == 0)
-                DataTypeInfo += "\tNo fields\n";
+                DataTypeInfo += "\tNo fields.\n";
             else
             {
                 DataTypeInfo += "\tFields:\n\t\t";
@@ -125,20 +125,20 @@ namespace Assembly_Browser
             }
 
             if (properties.Count == 0)
-                DataTypeInfo += "\n\tNo properties\n";
+                DataTypeInfo += "\n\tNo properties.\n";
             else
             {
-                DataTypeInfo += "\n\tProperties\n\t\t";
+                DataTypeInfo += "\n\tProperties:\n\t\t";
 
                 foreach (PropertyInfo p in properties)
                     DataTypeInfo += p.type + " " + p.name + "\n\t\t";
             }
 
             if (methods.Count == 0)
-                DataTypeInfo += "\n\tNo methods\n";
+                DataTypeInfo += "\n\tNo methods.\n";
             else
             {
-                DataTypeInfo += "\n\tMethods\n\t\t";
+                DataTypeInfo += "\n\tMethods:\n\t\t";
 
                 foreach (MethodInfo m in methods)
                     DataTypeInfo += m.modificators + m.name + "\n\t\t";
