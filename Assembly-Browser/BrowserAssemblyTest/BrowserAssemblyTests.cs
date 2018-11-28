@@ -51,5 +51,13 @@ namespace BrowserAssemblyTest
             Assert.IsTrue(AssemblyTree.Namespaces[0].DataTypes[1].properties.Count > 0);
             Assert.IsTrue(AssemblyTree.Namespaces[0].DataTypes[1].methods.Count > 0);
         }
+
+        [TestMethod]
+        public void NamesTest()
+        {
+            Assert.AreEqual(AssemblyTree.Namespaces[0].DataTypes[1].fields[0].name, "ID");
+            Assert.AreEqual(AssemblyTree.Namespaces[0].DataTypes[1].properties[0].name, "SomeInfo");
+            Assert.AreEqual(AssemblyTree.Namespaces[0].DataTypes[1].methods[0].name, "ToString");
+        }
     }
 }
